@@ -1,5 +1,9 @@
 <?php
+session_start();
   include"../lib/koneksi.php";
+  if (!isset($_SESSION['iduser'])) {
+    include"login.php";
+  }else{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +45,22 @@
     case 'edit':
       include"modul/kategori/edit.php";
       break;
+    case 'delete':
+      include"modul/kategori/delete.php";
+      break;
+    case 'berita':
+      include"modul/berita/data.php";
+      break;
+    case 'addberita':
+        include"modul/berita/add.php";
+        break;
+    case 'keluar':
+      include"logout.php";
+      break;
     default:
-      # code...
       break;
     }
-      include"modul/content.php";
+      // include"modul/content.php";
     ?>
   </div>
 
@@ -57,3 +72,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php } ?>
